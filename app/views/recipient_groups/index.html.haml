@@ -1,0 +1,32 @@
+%h1 Listing recipient_groups
+
+%table.table
+  %thead
+    %tr
+      %th Group Name
+      %th Description
+      %th Date Created
+      %th
+
+  %tbody
+    - @recipient_groups.each do |recipient_group|
+      %tr
+        %td= recipient_group.name
+        %td= recipient_group.description
+        %td= recipient_group.created_at
+        %td{ align: 'right' }
+          /= link_to 'Show', recipient_group
+          = link_to 'View Recipient',
+            recipients_path(recipient_group_id: recipient_group),
+            class: "btn btn-sm btn-primary"
+          = link_to 'Edit',
+            edit_recipient_group_path(recipient_group),
+            class: "btn btn-sm btn-primary"
+          = link_to 'Destroy',
+            recipient_group,
+            :method => :delete, :data => { :confirm => 'Are you sure?' },
+            class: "btn btn-sm btn-primary"
+
+%br
+
+= link_to 'New Recipient group', new_recipient_group_path, class: "btn btn-primary"

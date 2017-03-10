@@ -1,0 +1,62 @@
+%nav.navbar.navbar-inverse
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#"} GoPhish
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.active
+          = link_to '#' do
+            %span.glyphicon.glyphicon-stats
+            Dashboard
+            %span.sr-only (current)
+        %li
+          -# %a{:href => "#"} Campaign
+          = link_to 'Campaigns', campaigns_path
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Options
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to 'Recipient Group', recipient_groups_path
+            %li
+              = link_to 'New Recipient Group', new_recipient_group_path
+            %li.divider{:role => "separator"}
+            %li
+              = link_to 'Senders', senders_path
+            %li
+              = link_to 'New Senders', new_sender_path
+            %li.divider{:role => "separator"}
+            %li
+              = link_to 'Email Templates', email_templates_path
+            %li
+              = link_to 'New Email Templates', new_email_template_path
+            %li.divider{:role => "separator"}
+            %li
+              %a{:href => "#"} One more separated link
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Username Here
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to 'Signout', '#'
+            %li
+              = link_to 'Change Password', '#'
+            %li
+              %a{:href => "#"} Subscription
+            %li.divider{:role => "separator"}
+            %li
+              = link_to '#' do
+                %span.glyphicon.glyphicon-cog
+                Settings
+    / /.navbar-collapse
+  / /.container-fluid

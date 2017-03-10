@@ -1,0 +1,22 @@
+%h1 Listing senders
+
+%table.table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th
+
+  %tbody
+    - @senders.each do |sender|
+      %tr
+        %td= sender.title
+        %td= sender.description
+        %td{ align: 'right' }
+          = link_to 'Show', sender
+          = link_to 'Edit', edit_sender_path(sender)
+          = link_to 'Destroy', sender, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Sender', new_sender_path

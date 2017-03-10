@@ -1,0 +1,30 @@
+.panel.panel-info
+  .panel-heading
+    %h4 Edit
+  .panel-body
+    = render 'form'
+-# .panel.panel-info
+-#   .panel-heading
+-#     %h4 Editing campaign
+-#   .panel-body
+-#     = form_for @campaign do |f|
+-#       .form-group
+-#         = f.label :title
+-#         = f.text_field :title, class: "form-control", style: "width:300px"
+-#       %table.table.table-striped
+-#         %thead
+-#           %th Recipient group
+-#           %th Description
+-#           %th
+-#         %tbody
+-#           - @recipient_groups.each do |recipient_group|
+-#             %tr
+-#               %td= recipient_group.name
+-#               %td= recipient_group.description
+-#               %td= f.check_box :recipient_group_ids, { multiple: true }, recipient_group.id, false
+-#       = f.submit 'Update', class: "btn btn-primary"
+    -# = render 'form'
+    -#
+    -# = link_to 'Show', @campaign
+    -# \|
+    -# = link_to 'Back', campaigns_path

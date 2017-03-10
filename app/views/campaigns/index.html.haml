@@ -1,0 +1,34 @@
+.panel.panel-info
+  .panel-heading
+    %h4 Listing campaigns
+  .panel-body
+    %table.table
+      %thead
+        %tr
+          %th Campaign Name
+          %th Description
+          %th Date Start
+          %th Date End
+
+      %tbody
+        - @campaigns.each do |campaign|
+          %tr
+            %td= campaign.title
+            %td= campaign.description
+            %td= campaign.date_start_at
+            %td= campaign.date_end_at
+            %td{ align: 'right' }
+              = link_to 'Show',
+                campaign,
+                class: "btn btn-sm btn-primary"
+              = link_to 'Edit',
+                edit_campaign_path(campaign),
+                class: "btn btn-sm btn-primary"
+              = link_to 'Destroy',
+                campaign,
+                :method => :delete, :data => { :confirm => 'Are you sure?' },
+                class: "btn btn-sm btn-primary"
+
+    %br
+
+    = link_to 'New Campaign', new_campaign_path, class: "btn btn-primary"

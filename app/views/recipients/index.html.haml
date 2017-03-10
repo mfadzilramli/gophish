@@ -1,0 +1,32 @@
+%h1 Listing recipients
+
+%table.table
+  %thead
+    %tr
+      %th Full Name
+      %th Designation
+      %th Department
+      %th Email
+      %th
+  %tbody
+    - @recipients.each do |recipient|
+      %tr
+        %td= recipient.full_name
+        %td= recipient.designation
+        %td= recipient.department
+        %td= recipient.email_to
+        %td{ align: 'right' }
+          = link_to 'Show', recipient_path(recipient,
+            recipient_group_id: params[:recipient_group_id]),
+            class: "btn btn-sm btn-primary"
+          = link_to 'Edit', edit_recipient_path(recipient,
+            recipient_group_id: params[:recipient_group_id]),
+            class: "btn btn-sm btn-primary"
+          = link_to 'Destroy', recipient_path(recipient,
+            recipient_group_id: params[:recipient_group_id]),
+            :method => :delete, :data => { :confirm => 'Are you sure?' },
+            class: "btn btn-sm btn-primary"
+
+%br
+
+= link_to 'New Recipient', new_recipient_path(recipient_group_id: params[:recipient_group_id]), class: "btn btn-primary"

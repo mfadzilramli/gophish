@@ -1,0 +1,39 @@
+= form_for @campaign do |f|
+  - if @campaign.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@campaign.errors.count, "error")} prohibited this campaign from being saved:"
+      %ul
+        - @campaign.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control input-sm", style: "width:300px"
+
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: "form-control input-sm", rows: 4, style: "width:500px"
+
+  .form-group
+    = f.label :date_start_at
+    #datetime_start.input-group
+      = f.datetime_select :date_start_at
+
+  .form-group
+    = f.label :date_end_at
+    #datetime_end.input-group
+      = f.datetime_select :date_end_at
+
+  %table.table.table-striped
+    %thead
+      %tr.danger
+        %th Recipient group
+        %th Description
+        %th
+    %tbody
+      - @recipient_groups.each do |recipient_group|
+        %tr
+          %td= recipient_group.name
+          %td= recipient_group.description
+          %td= f.check_box :recipient_group_ids, { multiple: true }, recipient_group.id, false
+  .actions
+    = f.submit 'Save', class: "btn btn-primary"

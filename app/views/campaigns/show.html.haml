@@ -1,0 +1,25 @@
+%p#notice= notice
+
+.panel.panel-info
+  .panel-heading
+    %h4= @campaign.title
+  .panel-body
+    %table.table
+      %thead
+        %tr.danger
+          %th Recipient Group Name
+          %th Description
+          %th # Targets
+          %th
+      %tbody
+        - @recipient_groups.each do |recipient_group|
+          %tr
+            %td= recipient_group.name
+            %td= recipient_group.description
+            %td= recipient_group.recipients.count
+            %td{ align: 'right'}= link_to 'View List', recipients_path(recipient_group_id: recipient_group.id), class: "btn btn-sm btn-primary"
+
+
+    -# = link_to 'Edit', edit_campaign_path(@campaign)
+    -# \|
+    -# = link_to 'Back', campaigns_path

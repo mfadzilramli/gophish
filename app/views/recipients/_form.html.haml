@@ -1,0 +1,27 @@
+= form_for @recipient do |f|
+  - if @recipient.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@recipient.errors.count, "error")} prohibited this recipient from being saved:"
+      %ul
+        - @recipient.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :full_name
+    = f.text_field :full_name, class: "form-control"
+
+  .form-group
+    = f.label :designation
+    = f.text_field :designation, class: "form-control"
+
+  .form-group
+    = f.label :department
+
+    = f.text_field :department, class: "form-control"
+  .form-group
+    = f.label :email_to
+    = f.text_field :email_to, class: "form-control"
+
+  .actions
+    = hidden_field_tag :recipient_group_id, params[:recipient_group_id]
+    = f.submit 'Save', class: "btn btn-primary"

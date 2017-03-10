@@ -1,0 +1,26 @@
+.panel.panel-info
+  .panel-heading
+    %h4 Listing Email Templates
+  .panel-body
+    %table.table
+      %thead
+        %tr.danger
+          %th Template Title
+          %th Description
+          %th Private
+          %th
+
+      %tbody
+        - @email_templates.each do |email_template|
+          %tr
+            %td= email_template.title
+            %td= email_template.description
+            %td= email_template.shared
+            %td{ align: 'right' }
+              = link_to 'Show', email_template
+              = link_to 'Edit', edit_email_template_path(email_template)
+              = link_to 'Destroy', email_template, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    %br
+
+    = link_to 'New Email template', new_email_template_path, class: "btn btn-primary"

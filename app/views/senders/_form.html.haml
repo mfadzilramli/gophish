@@ -1,0 +1,34 @@
+= form_for @sender do |f|
+  - if @sender.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@sender.errors.count, "error")} prohibited this sender from being saved:"
+      %ul
+        - @sender.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control"
+
+  .form-group
+    = f.label :subject
+    = f.text_field :subject, class: "form-control"
+
+  .form-group
+    = f.label :email_from
+    = f.text_field :email_from, class: "form-control"
+
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: "form-control"
+
+  .form-group
+
+    = f.label 'Template'
+    = f.collection_select :email_template_id, EmailTemplate.all, :id, :title, { selected: @sender.email_template_id }, class: "form-control"
+  .actions
+    = f.submit 'Save', class: "btn btn-primary"
